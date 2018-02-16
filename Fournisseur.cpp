@@ -58,6 +58,15 @@ void Fournisseur::enleverProduit(Produit* produit)
     }
 }
 
+Fournisseur & Fournisseur::operator=(const Fournisseur & fournisseur)
+{
+	if (this != &fournisseur) {
+		Usager temp(*this);
+		temp = static_cast<Usager> (fournisseur);
+	}
+	return *this;
+}
+
 ostream& operator<<(ostream & os, Fournisseur& fournisseur)
 {
     os << static_cast<Usager>(fournisseur)

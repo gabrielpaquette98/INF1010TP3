@@ -17,10 +17,14 @@ const int  NB_PRODUCTS = 15;
 
 /**
 *Répondez aux questions ici :
-* 1/
+* 1/ En faisaint dériver ProduitOrdinaire et ProduitAuxEncheres de Produit, 
+	 on évite de copier-coller le code d'un produit de base dans chacune de ces classes.
+	 Les classes dérivées peuvent ainsi profiter des attributs et des méthodes
+	 de la classe de base, tout en ajoutant une spécialisation, ce qui est l'intérêt
+	 du concept d'héritage.
 * 2/
-* 2.1
-* 2.2
+* 2.1 //important pour utiliser la méthode en tant que classe de base, éviter de recopier des lignes
+* 2.2 //boucle infinie, aucun affichage, devoir tout recopier et réécrire
 **/
 
 int main()

@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - ProduitAuxEncheres.h
-* Date: 
-* Auteur:
+* Date: 16 février 2018
+* Auteur: 1894061 & 1899088
 *******************************************/
 #ifndef PRODUITAUXENCHERES_H
 #define PRODUITAUXENCHERES_H

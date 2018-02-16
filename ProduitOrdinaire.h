@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - ProduitOrdinaire.h
-* Date: 
-* Auteur:
+* Date: 16 février 2018
+* Auteur: 1894061 & 1899088
 *******************************************/
 
 #ifndef PRODUITORDINAIRE_H
@@ -18,7 +18,7 @@ public:
 	
 	ProduitOrdinaire(Fournisseur& fournisseur, 
 		             const string& nom = "outil", int reference = 0,
-		             double prix = 0.0, TypeProduit type = TypeProduitOrdinaire,bool estTaxable = true);
+		             double prix = 0.0, TypeProduit type = TypeProduitOrdinaire, bool estTaxable = true);
 	bool obtenirEstTaxable() const;
 	void modifierEstTaxable(bool estTaxable);
 	friend ostream& operator<<(ostream& os, const ProduitOrdinaire& produit);

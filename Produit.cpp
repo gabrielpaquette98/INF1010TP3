@@ -1,19 +1,28 @@
 /********************************************
 * Titre: Travail pratique #3 - Produit.cpp
-* Date: 
-* Auteur: 
+* Date: 16 février 2018
+* Auteur: 1894061 & 1899088
 *******************************************/
 
 #include "Produit.h"
 
-Produit::Produit(Fournisseur& fournisseur,const string& nom, int reference, double prix,TypeProduit type) 
+Produit::Produit(Fournisseur& fournisseur, const string& nom, int reference, double prix, TypeProduit type) :
+	fournisseur_{ fournisseur },
+	nom_{ nom },
+	reference_{ reference },
+	prix_{ prix },
+	type_ { type }
 {
-	// à faire
+	//à faire /fait
+	//Ajouter le produit au fournisseur
+	fournisseur_.ajouterProduit(this);
 }
 
 
 Produit::~Produit() {
-	// à faire
+	// à faire /fait
+	//Retirer le produit du catalogue du fournisseur
+	fournisseur_.enleverProduit(this);
 }
 
 // Methodes d'acces
@@ -34,10 +43,12 @@ double Produit::obtenirPrix() const
 
 Fournisseur& Produit::obtenirFournisseur() const
 {
-	// à faire
+	// à faire /fait
+	return fournisseur_;
 }
 TypeProduit Produit::retournerType() {
- // à faire
+	// à faire /fait
+	return type_;
 }
 
 // Methodes de modification
@@ -73,6 +84,7 @@ bool Produit::operator==(const Produit & produit) const
 			prix_ == produit.prix_ &&
 			reference_ == produit.reference_);
 }
+
 // pour lire un type enumeré
 inline istream & operator >> (istream & is, TypeProduit & typeProduit) {
 	unsigned int type = 0;

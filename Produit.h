@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - Produit.h
-* Date: 
-* Auteur: 
+* Date: 16 février 2018
+* Auteur: 1894061 & 1899088
 *******************************************/
 
 #ifndef PRODUIT_H

@@ -11,41 +11,59 @@
 #include "Fournisseur.h"
 using namespace std;
 
-
-ProduitOrdinaire::ProduitOrdinaire(Fournisseur & fournisseur, const string & nom, int reference, double prix, TypeProduit type, bool estTaxable)
-	: Produit(fournisseur, nom, reference, prix, type), estTaxable_{ estTaxable }
+/**
+* Constructeur de ProduitAuxEncheres
+* \param {Fournisseur& fournisseur} Référence sur le fournisseur
+* \param {const string& nom} Nom du produit
+* \param {int reference} Numéro de référence du produit
+* \param {double prix} Prix du produit
+*/
+ProduitOrdinaire::ProduitOrdinaire(Fournisseur & fournisseur, const string & nom, int reference, double prix, bool estTaxable)
+	: Produit(fournisseur, nom, reference, prix, TypeProduitOrdinaire), estTaxable_{ estTaxable }
 {
 }
 
-//Méthode d'accès 
+/**
+* Méthode d'accès à la valeur de vérité représentant l'applicabilité de taxes
+* \return {bool} la valeur de vérité représentant l'applicabilité de taxes
+*/
 bool ProduitOrdinaire::obtenirEstTaxable() const
 {
 	return estTaxable_;
 }
 
-//Méthode de modification
+/**
+* Méthode de modification de la valeur de vérité représentant l'applicabilité de taxes
+* \param {bool} la nouvelle valeur de vérité représentant l'applicabilité de taxes
+*/
 void ProduitOrdinaire::modifierEstTaxable(bool estTaxable)
 {
 	estTaxable_ = estTaxable;
 }
 
 
-//Surcharge des opérateurs de stream
-// penser à utiliser static_cast<T>(Objet).
+/**
+* Surcharge de l'opérateur << en utilisant celui de Produit par cast et 
+* en ajoutant les attributs suppplémentaires
+* \param {ostream& os} flot de sortie
+* \param {const ProduitOrdinaire& produit} produit qui sera écrit à la sortie du stream
+* \return {ostream& os} flot de sortie
+*/
 ostream & operator<<(ostream & os, const ProduitOrdinaire & produit)
 {
-	// La surcharge de l’opérateur << pour afficher un produit ordinaire. 
-	// Utilisez une forme d’affichage similaire à la classe Produit. Considérez 
-	// l’attribut estTaxable_ dans l’affichage.
-
 	os << static_cast<Produit>(produit)
 		<< "\t Est taxable : " << boolalpha << produit.estTaxable_ << endl;
 	return os;
 }
 
+/**
+* Surcharge de l'opérateur >> en utilisant celui de Produit par cast et
+* en ajoutant les attributs suppplémentaires
+* \param {istream& is} flot d'entrée
+* \param {ProduitOrdinaire& produit} produit qui sera généré avec l'entrée
+* \return {istream& is} flot d'entrée
+*/
 istream & operator>>(istream & is, ProduitOrdinaire & produit)
 {
-	// La surcharge de l’opérateur >> qui fait appel à la surcharge de 
-	// l’opérateur >> de la classe Produit et ajoute la lecture de l’attribut estTaxable_
 	return is >> static_cast<Produit>(produit) >> produit.estTaxable_;
 }

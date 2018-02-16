@@ -63,6 +63,10 @@ Fournisseur & Fournisseur::operator=(const Fournisseur & fournisseur)
 	if (this != &fournisseur) {
 		Usager temp(*this);
 		temp = static_cast<Usager> (fournisseur);
+        // Copier les attributs spécifiques à un Fournisseur (contenuCatalogue_)
+        contenuCatalogue_.clear();
+        for (int i = 0; i < fournisseur.obtenirCatalogue().size(); i++)
+            contenuCatalogue_.push_back(fournisseur.obtenirCatalogue()[i]);
 	}
 	return *this;
 }

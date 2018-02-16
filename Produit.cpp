@@ -6,6 +6,14 @@
 
 #include "Produit.h"
 
+/**
+* Constructeur de Produit qui ajoute le produit au catalogue du fournisseur
+* \param {Fournisseur& fournisseur} Référence sur le fournisseur
+* \param {const string& nom} Nom du produit
+* \param {int reference} Numéro de référence du produit
+* \param {double prix} Prix du produit
+* \param {TypeProduit type} Type du produit, doit ProduitAuxEncheres ou ProduitOrdinaire
+*/
 Produit::Produit(Fournisseur& fournisseur, const string& nom, int reference, double prix, TypeProduit type) :
 	fournisseur_{ fournisseur },
 	nom_{ nom },
@@ -13,15 +21,13 @@ Produit::Produit(Fournisseur& fournisseur, const string& nom, int reference, dou
 	prix_{ prix },
 	type_ { type }
 {
-	//à faire /fait
-	//Ajouter le produit au fournisseur
 	fournisseur_.ajouterProduit(this);
 }
 
-
+/**
+* Destructeur de Produit qui le retire du catalogue du fournisseur
+*/
 Produit::~Produit() {
-	// à faire /fait
-	//Retirer le produit du catalogue du fournisseur
 	fournisseur_.enleverProduit(this);
 }
 
@@ -41,13 +47,21 @@ double Produit::obtenirPrix() const
 	return prix_;
 }
 
+/**
+* Méthode d'accès à la référence du fournisseur
+* \return {Fournisseur&} Une référence sur le fournisseur du produit
+*/
 Fournisseur& Produit::obtenirFournisseur() const
 {
-	// à faire /fait
 	return fournisseur_;
 }
-TypeProduit Produit::retournerType() {
-	// à faire /fait
+
+/**
+* Méthode d'accès au type du produit
+* \return {TypeProduit} Le type du produit
+*/
+TypeProduit Produit::retournerType() 
+{
 	return type_;
 }
 

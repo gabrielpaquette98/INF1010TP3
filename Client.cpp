@@ -81,7 +81,17 @@ void Client::livrerPanier()
 
 void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montantMise) {
 	// à faire
-	
+	// modification du prix de base
+	// Vérifie si le montant de la mise est supérieur au prix actuel de l'enchère
+	if (montantMise > produitAuxEncheres->obtenirPrixBase())
+	{
+		produitAuxEncheres->modifierPrixBase(montantMise);
+		produitAuxEncheres->modifierIdentifiantClient(this->obtenirIdentifiant());
+	}
+	else
+	{
+		cout << "La mise n'est pas assez haute" << endl;
+	}
 }
 
 Client & Client::operator=(const Client & client)

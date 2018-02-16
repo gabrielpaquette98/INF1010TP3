@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - Client.cpp
-* Date: 
-* Auteur: 
+* Date: 16 février 2018 
+* Auteur: 1894061 & 1899088
 *******************************************/
 
 #include "Client.h"
@@ -13,6 +13,14 @@ Client::~Client()
 {
 	if (monPanier_ != nullptr)
 		delete monPanier_;
+}
+
+Client::Client(const string&  nom, const string& prenom, int identifiant, const string& codePostal, long date)
+	: Usager(nom, prenom, identifiant, codePostal)
+	, dateNaissance_ {date}
+	, monPanier_ {nullptr}
+{
+
 }
 
 Client::Client(const Client & client) :

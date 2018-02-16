@@ -116,6 +116,13 @@ Client & Client::operator=(const Client & client)
 
 ostream & operator<<(ostream & os, const Client & client)
 {
-	
-	// à faire
+	os << static_cast<Usager>(client)
+        << "\t Contenu du panier: " << endl;
+	Panier panierDuClient = *client.obtenirPanier();
+    for (int i = 0; i < panierDuClient.obtenirNombreContenu(); i++)
+    {
+		os << "\t \t" << panierDuClient.obtenirContenuPanier()[i];
+    }
+
+    return os;
 }

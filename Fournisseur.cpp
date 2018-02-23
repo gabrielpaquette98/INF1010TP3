@@ -31,10 +31,7 @@ void Fournisseur::modifierSatisfaction(Satisfaction satisfaction)
 
 void Fournisseur::noter(int appreciation)
 {
-	cout << "-------DEBUG-------- Niveau " << appreciation << " vaut:" << satisfaction_.niveaux_[appreciation] << endl;
     satisfaction_.niveaux_[appreciation]++;
-	cout << "-------DEBUG-------- Niveau " << appreciation + 1 << " augmente" << endl;
-	cout << "-------DEBUG-------- Niveau " << appreciation + 1 << " vaut: " << satisfaction_.niveaux_[appreciation] << endl;
 }
 
 void Fournisseur::ajouterProduit(Produit* produit)

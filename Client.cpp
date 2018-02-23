@@ -7,14 +7,23 @@
 #include "Client.h"
 #include "Fournisseur.h"
 
-
-
+/**
+* Destructeur d'objet Client
+*/
 Client::~Client()
 {
 	if (monPanier_ != nullptr)
 		delete monPanier_;
 }
 
+/**
+* Constructeur d'objet Client avec paramètres
+* \param {string&} nom nom du Client
+* \param {string&} prenom prenom du Client
+* \param {int} identifiant identifiant du Client
+* \param {string&} codePostal code postal du Client
+* \param {long} date date de naissance du Client
+*/
 Client::Client(const string&  nom, const string& prenom, int identifiant, const string& codePostal, long date)
 	: Usager(nom, prenom, identifiant, codePostal)
 	, dateNaissance_ {date}
@@ -23,6 +32,10 @@ Client::Client(const string&  nom, const string& prenom, int identifiant, const 
 
 }
 
+/**
+* Constructeur d'objet Client par copie
+* \param {Client&} client Client copié
+*/
 Client::Client(const Client & client) :
 	Usager(client.obtenirNom(), client.obtenirPrenom(), client.obtenirIdentifiant(), client.obtenirCodePostal()),	
 	dateNaissance_{ client.dateNaissance_ }
@@ -59,23 +72,17 @@ void Client::modifierDateNaissance(long date)
 }
 
 // Autres méthodes
+
+/**
+* Méthode permettant d'acheter un Produit
+* \param {ProduitOrdinaire*} prod produit acheté
+*/
 void Client::acheter(ProduitOrdinaire * prod)
 {
 	if (monPanier_ == nullptr)
 		monPanier_ = new Panier(this->obtenirIdentifiant());
 	monPanier_->ajouter(prod);
-	// obtenir une note aléatoire
 	int noteRnd = rand() % NIVEAUX_SATISFACTION;
-	// faire la mise à jour de la satisfaction au fournisseur
-	
-	//cette ligne fait un reset des valeurs de satisfaction. 
-	//Est-ce un fournisseur different a chaque fois?
-
-
-	//CECI FAIT UNE COPIE! (il faut prendre sa ref)
-	/*
-	Fournisseur fournisseur = prod->obtenirFournisseur();
-	*/
 	Fournisseur& fournisseur = prod->obtenirFournisseur();
 
 	fournisseur.noter(noteRnd);
@@ -88,11 +95,12 @@ void Client::livrerPanier()
 	monPanier_ = nullptr;
 }
 
-
+/**
+* Méthode permettant de miser sur un Produit aux enchères: ProduitAuxEncheres
+* \param {ProduitAuxEncheres*} produitAuxEncheres produit sur lequel la mise est effectuée
+* \param {double} montantMise montant de la mise
+*/
 void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montantMise) {
-	// à faire
-	// modification du prix de base
-	// Vérifie si le montant de la mise est supérieur au prix actuel de l'enchère
 	if (montantMise > produitAuxEncheres->obtenirPrixBase())
 	{
 		produitAuxEncheres->modifierPrixBase(montantMise);
@@ -104,6 +112,11 @@ void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montant
 	}
 }
 
+/**
+* Surcharge de l'opérateur =
+* \param {Client&} client Client affecté
+* \return {Client&} Client ayant reçu l'affectation
+*/
 Client & Client::operator=(const Client & client)
 {
 	if (this != &client) {
@@ -125,7 +138,12 @@ Client & Client::operator=(const Client & client)
 	return *this;
 }
 
-
+/**
+* Surcharge de l'opérateur de flot de sortie pour afficher un Client
+* \param {ostream&} os flot de sortie
+* \param {Client&} client Client devant être affiché
+* \return {ostream&} flot de sortie pour permettre les appels en cascades.
+*/
 ostream & operator<<(ostream & os, const Client & client)
 {
 	os << static_cast<Usager>(client)

@@ -1,17 +1,24 @@
 /********************************************
 * Titre: Travail pratique #3 - Panier.cpp
-* Date: 
-* Auteur: 
+* Date: 2018-02-23
+* Auteur: 1899088 et 1894061
 *******************************************/
 
 #include "Panier.h"
 using namespace std;
 
+/**
+* Constructeur par paramètre: Construit un panier en y associant un identifiant de Client
+* \param {int} idClient Identifiant du Client auquel appartient le Panier
+*/
 Panier::Panier(int idClient) {
 	idClient_ = idClient;
 }
 
-
+/**
+* Destructeur de Panier
+* Retire le contenu du panier
+*/
 Panier::~Panier()
 {
 	contenuPanier_.clear();
@@ -37,7 +44,10 @@ double Panier::obtenirTotalApayer() const {
 	return totalAPayer_;
 }
 
-
+/**
+* Méthode permettant de calculer le montant total associé à un Panier
+* \return {double} montant total du Panier
+*/
 double Panier::calculerTotalApayer()  const
 {
 	 // TODO rechercher les objets ProduitAuxEncheres
@@ -70,11 +80,19 @@ void Panier::modifierIdClient(int idClient) {
 	idClient_ = idClient;
 }
 
+/**
+* Méthode permettant d'appliquer la taxe définie par TAUX_TAXE à un produit se trouvant dans un Panier
+* \param {Produit*} prod Produit qui doit être taxé
+*/
 void Panier::appliquerTaxe(Produit * prod)
 {
 	prod->modifierPrix(prod->obtenirPrix()*(1 + TAUX_TAXE)); // Ajout des taxes
 }
 
+/**
+* Méthode permettant d'ajouter un produit (enchère ou ordinaire) au Panier
+* \param {Produit*} prod Produit qui doit être ajouté au Panier
+*/
 void Panier::ajouter(Produit * prod)
 {
 	if (prod->retournerType() == TypeProduitOrdinaire)
@@ -107,6 +125,12 @@ Produit* Panier::trouverProduitPlusCher()
 	return prodPlusChere;
 }
 
+/**
+* Surcharge de l'opérateur de flot de sortie pour afficher un Panier
+* \param {ostream&} os flot de sortie
+* \param {Panier&} panier Panier devant être affiché
+* \return {ostream&} flot de sortie pour permettre les appels en cascades.
+*/
 ostream & operator<<(ostream & os,  const Panier & panier)
 {
 	os << "Votre Panier: " << endl;

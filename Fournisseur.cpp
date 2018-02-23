@@ -5,6 +5,9 @@
 *******************************************/
 #include "Fournisseur.h"
 
+/**
+* Constructeur de Fournisseur
+*/
 Fournisseur::Fournisseur(const string&  nom, const string& prenom, int identifiant, const string& codePostal)
     : Usager::Usager(nom, prenom, identifiant, codePostal)
     , contenuCatalogue_ { }
@@ -29,16 +32,28 @@ void Fournisseur::modifierSatisfaction(Satisfaction satisfaction)
         satisfaction_.niveaux_[i] = satisfaction.niveaux_[i];
 }
 
+/**
+* Méthode permettant de noter un Fournisseur
+* \param {int} appreciation appréciation associée à la note
+*/
 void Fournisseur::noter(int appreciation)
 {
     satisfaction_.niveaux_[appreciation]++;
 }
 
+/**
+* Méthode permettant d'ajouter un Produit au Fournisseur
+* \param {Produit*} produit Produit à ajouter
+*/
 void Fournisseur::ajouterProduit(Produit* produit)
 {
     contenuCatalogue_.push_back(produit);
 }
 
+/**
+* Méthode permettant de retirer un Produit au Fournisseur
+* \param {Produit*} produit Produit à retirer
+*/
 void Fournisseur::enleverProduit(Produit* produit)
 {
     int positionProduit = -1;
@@ -58,6 +73,11 @@ void Fournisseur::enleverProduit(Produit* produit)
     }
 }
 
+/**
+* Surcharge de l'opérateur d'affectation =
+* \param {Fournisseur&} fournisseur opérande
+* \return {Fournisseur&} Fournisseur affecté
+*/
 Fournisseur & Fournisseur::operator=(const Fournisseur & fournisseur)
 {
 	if (this != &fournisseur) {
@@ -71,6 +91,12 @@ Fournisseur & Fournisseur::operator=(const Fournisseur & fournisseur)
 	return *this;
 }
 
+/**
+* Surcharge de l'opérateur de flot de sortie pour afficher un Fournisseur
+* \param {ostream&} os flot de sortie
+* \param {Fournisseur&} fournisseur Fournisseur devant être affiché
+* \return {ostream&} flot de sortie pour permettre les appels en cascades.
+*/
 ostream& operator<<(ostream & os, Fournisseur& fournisseur)
 {
     os << static_cast<Usager>(fournisseur)

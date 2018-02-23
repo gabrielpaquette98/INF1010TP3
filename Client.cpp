@@ -67,8 +67,18 @@ void Client::acheter(ProduitOrdinaire * prod)
 	// obtenir une note aléatoire
 	int noteRnd = rand() % NIVEAUX_SATISFACTION+1;
 	// faire la mise à jour de la satisfaction au fournisseur
+	
+	//cette ligne fait un reset des valeurs de satisfaction. 
+	//Est-ce un fournisseur different a chaque fois?
+
+
+	//CECI FAIT UNE COPIE! (il faut prendre sa ref)
+	/*
 	Fournisseur fournisseur = prod->obtenirFournisseur();
-	fournisseur.noter(noteRnd);
+	*/
+	Fournisseur& fournisseur = prod->obtenirFournisseur();
+
+	fournisseur.noter(noteRnd - 1);
 }
 
 void Client::livrerPanier()
@@ -120,11 +130,17 @@ ostream & operator<<(ostream & os, const Client & client)
 {
 	os << static_cast<Usager>(client)
         << "\t Contenu du panier: " << endl;
-	Panier panierDuClient = *client.obtenirPanier();
-    for (int i = 0; i < panierDuClient.obtenirNombreContenu(); i++)
-    {
-		os << "\t \t" << panierDuClient.obtenirContenuPanier()[i];
-    }
+	if (client.obtenirPanier() != nullptr) 
+	{
+		Panier panierDuClient = *client.obtenirPanier();
+		for (int i = 0; i < panierDuClient.obtenirNombreContenu(); i++)
+		{
+			os << "\t \t" << *panierDuClient.obtenirContenuPanier()[i];
+		}
+	}
+	else
+		os << "Le panier est vide" << endl;
+
 
     return os;
 }

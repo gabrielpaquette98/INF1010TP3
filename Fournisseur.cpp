@@ -31,7 +31,10 @@ void Fournisseur::modifierSatisfaction(Satisfaction satisfaction)
 
 void Fournisseur::noter(int appreciation)
 {
+	cout << "-------DEBUG-------- Niveau " << appreciation << " vaut:" << satisfaction_.niveaux_[appreciation] << endl;
     satisfaction_.niveaux_[appreciation]++;
+	cout << "-------DEBUG-------- Niveau " << appreciation + 1 << " augmente" << endl;
+	cout << "-------DEBUG-------- Niveau " << appreciation + 1 << " vaut: " << satisfaction_.niveaux_[appreciation] << endl;
 }
 
 void Fournisseur::ajouterProduit(Produit* produit)
@@ -77,7 +80,7 @@ ostream& operator<<(ostream & os, Fournisseur& fournisseur)
         << "\t satisfaction: " << endl;
     for (int i = 0; i < NIVEAUX_SATISFACTION; i++)
     {
-        os << "\t \t" << "Niveau: " << i 
+        os << "\t \t" << "Niveau: " << (i + 1) << ": "
             << fournisseur.obtenirSatisfaction().niveaux_[i] << endl;
     }
 

@@ -13,13 +13,10 @@
 * \param {int reference} Numéro de référence du produit
 * \param {double prix} Prix du produit
 */
-ProduitAuxEncheres::ProduitAuxEncheres(Fournisseur & fournisseur, const string & nom, int reference, double prix)
-	: Produit(fournisseur, nom, reference, prix, TypeProduitAuxEncheres), prixBase_{ 0 }, identifiantClient_{ 0 }
+ProduitAuxEncheres::ProduitAuxEncheres(Fournisseur & fournisseur, const string & nom, int reference, double prix, TypeProduit type)
+	: Produit(fournisseur, nom, reference, prix, type), prixBase_{ 0 }, identifiantClient_{ 0 }
 {
 }
-// !!!!!
-// Correction de l'enonce: ProduitAuxEncheres(Fournisseur& fournisseur,const string& nom = "outil", int reference = 0,
-// double prix = 0.0, TypeProduit type = TypeProduitAuxEncheres);
 
 /**
 * Méthode d'accès à l'identifiant du client avec la plus grosse mise

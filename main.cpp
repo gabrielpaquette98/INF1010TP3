@@ -58,11 +58,11 @@ int main()
 	double echantillonPrix[NB_PRODUCTS] =
 	{ 12.56, 50.0, 34.0, 56.0, 77.0, 91.0, 21.0, 34.0, 88.0, 65.0, 42.0, 72.0, 82.0, 53.0, 68.0 };
 	for (int i = 0; i < NB_PRODUCTS; i++)
-		produits[i] = new ProduitOrdinaire(poly, "p" + to_string(i), i, echantillonPrix[i], true);
+		produits[i] = new ProduitOrdinaire(poly, "p" + to_string(i), i, echantillonPrix[i], true, TypeProduitOrdinaire);
 
 	// Creez un produit aux encheres
 	ProduitAuxEncheres* prodAuxEncheres = new ProduitAuxEncheres(poly, "pAuxEncheres", 20,
-		100);
+		100, TypeProduitAuxEncheres);
 
 	// Le client achete les 7 premiers porduits
 	for (int i = 0; i < 7; i++)

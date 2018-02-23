@@ -18,8 +18,8 @@ using namespace std;
 * \param {int reference} Numéro de référence du produit
 * \param {double prix} Prix du produit
 */
-ProduitOrdinaire::ProduitOrdinaire(Fournisseur & fournisseur, const string & nom, int reference, double prix, bool estTaxable)
-	: Produit(fournisseur, nom, reference, prix, TypeProduitOrdinaire), estTaxable_{ estTaxable }
+ProduitOrdinaire::ProduitOrdinaire(Fournisseur & fournisseur, const string & nom, int reference, double prix, bool estTaxable, TypeProduit type)
+	: Produit(fournisseur, nom, reference, prix, type), estTaxable_{ estTaxable }
 {
 }
 

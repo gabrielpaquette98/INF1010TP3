@@ -18,7 +18,7 @@ public:
 	
 	ProduitOrdinaire(Fournisseur& fournisseur, 
 		             const string& nom = "outil", int reference = 0,
-		             double prix = 0.0, bool estTaxable = true);
+		             double prix = 0.0, bool estTaxable = true, TypeProduit type = TypeProduitOrdinaire);
 
 	bool obtenirEstTaxable() const;
 	void modifierEstTaxable(bool estTaxable);

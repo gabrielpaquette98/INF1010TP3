@@ -23,8 +23,10 @@ const int  NB_PRODUCTS = 15;
 	 de la classe de base, tout en ajoutant une spécialisation, ce qui est l'intérêt
 	 du concept d'héritage.
 * 2/
-* 2.1 //important pour utiliser la méthode en tant que classe de base, éviter de recopier des lignes
-* 2.2 //boucle infinie, aucun affichage, devoir tout recopier et réécrire
+* 2.1 Dans la surcharge de l'opérateur <<, static_cast permet entre autres de convertir un objet d'une classe
+	  spécialisée ayant été passé en paramètres sous la forme d'un objet de la classe de base et 
+	  d'utiliser ses attributs spécifiques.
+* 2.2 boucle infinie, aucun affichage, devoir tout recopier et réécrire
 **/
 
 int main()

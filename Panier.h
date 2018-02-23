@@ -35,6 +35,8 @@ public:
 	void ajouter(Produit * prod);
 	void livrer();
 
+	void appliquerTaxe(Produit * prod);
+
 	Produit* trouverProduitPlusCher();
 	friend ostream& operator<<(ostream& os, const Panier & panier);
 

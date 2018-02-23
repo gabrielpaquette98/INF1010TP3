@@ -8,7 +8,7 @@
 using namespace std;
 
 Panier::Panier(int idClient) {
-	// TODO
+	idClient_ = idClient;
 }
 
 
@@ -55,12 +55,20 @@ void Panier::modifierIdClient(int idClient) {
 	idClient_ = idClient;
 }
 
-
-
+void Panier::appliquerTaxe(Produit * prod)
+{
+	prod->modifierPrix(prod->obtenirPrix*(1 + TAUX_TAXE)); // Ajout des taxes
+}
 
 void Panier::ajouter(Produit * prod)
 {
-	// TODO
+	if (prod->retournerType() == TypeProduitOrdinaire)
+	{
+		if (static_cast<ProduitOrdinaire*>(prod)->obtenirEstTaxable())
+		{
+			appliquerTaxe(prod);
+		}
+	}
 
 	contenuPanier_.push_back(prod);
 }

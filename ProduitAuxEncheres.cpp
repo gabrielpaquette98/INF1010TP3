@@ -17,6 +17,9 @@ ProduitAuxEncheres::ProduitAuxEncheres(Fournisseur & fournisseur, const string &
 	: Produit(fournisseur, nom, reference, prix, TypeProduitAuxEncheres), prixBase_{ 0 }, identifiantClient_{ 0 }
 {
 }
+// !!!!!
+// Correction de l'enonce: ProduitAuxEncheres(Fournisseur& fournisseur,const string& nom = "outil", int reference = 0,
+// double prix = 0.0, TypeProduit type = TypeProduitAuxEncheres);
 
 /**
 * Méthode d'accès à l'identifiant du client avec la plus grosse mise

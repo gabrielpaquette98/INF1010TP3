@@ -97,8 +97,10 @@ void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montant
 Client & Client::operator=(const Client & client)
 {
 	if (this != &client) {
-		Usager temp(*this);
-		temp = static_cast<Usager> (client);
+		this->modifierNom(client.obtenirNom());
+		this->modifierPrenom(client.obtenirPrenom());
+		this->modifierIdentifiant(client.obtenirIdentifiant());
+		this->modifierCodePostal(client.obtenirCodePostal());
 		dateNaissance_ = client.obtenirDateNaissance();
 		if (client.monPanier_ != nullptr) {
 			delete monPanier_;

@@ -1,0 +1,3 @@
+Ajout(s) de méthode(s):
+	-	Nous avons ajouté une fonction appliquerTaxe() dans le fichier Panier.cpp pour
+		éviter les chiffres magiques (1+constante) et clarifier le code.

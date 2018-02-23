@@ -53,6 +53,9 @@
     <ClInclude Include="..\..\ProduitOrdinaire.h" />
     <ClInclude Include="..\..\Usager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CommentairesGen.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5C16A314-2E2D-45EC-9FA9-919DBDBFA652}</ProjectGuid>

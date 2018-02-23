@@ -40,7 +40,22 @@ double Panier::obtenirTotalApayer() const {
 
 double Panier::calculerTotalApayer()  const
 {
-	 // TODO
+	 // TODO rechercher les objets ProduitAuxEncheres
+	double total = 0.0;
+	for (int i = 0; i < contenuPanier_.size(); i++)
+	{
+		if (contenuPanier_[i]->retournerType() == TypeProduitAuxEncheres)
+		{
+			// TODO verifier si id du client ayant fait la > mise est id du client possedant ce panier
+			ProduitAuxEncheres* prodObserve = static_cast<ProduitAuxEncheres*>(contenuPanier_[i]);
+			if (prodObserve->obtenirIdentifiantClient() == idClient_)
+			{
+				// TODO Ajouter le montant de ce produit dans totalAPayer_
+				total = totalAPayer_ + prodObserve->obtenirPrix();
+			}
+		}
+	}
+	return total;
 }
 
 
@@ -94,7 +109,22 @@ Produit* Panier::trouverProduitPlusCher()
 
 ostream & operator<<(ostream & os,  const Panier & panier)
 {
-	// TODO
-
-	
+	os << "Votre Panier: " << endl;
+	for (int i = 0; i < panier.obtenirNombreContenu(); i++)
+	{
+		if (panier.obtenirContenuPanier()[i]->retournerType() == TypeProduitOrdinaire)
+		{
+			ProduitOrdinaire* prodOrdinaireAAfficher = static_cast<ProduitOrdinaire*>(panier.obtenirContenuPanier()[i]);
+			os << '\t' << *prodOrdinaireAAfficher << endl;
+		}
+		else if (panier.obtenirContenuPanier()[i]->retournerType() == TypeProduitAuxEncheres)
+		{
+			ProduitAuxEncheres* prodEncheresAAfficher = static_cast<ProduitAuxEncheres*>(panier.obtenirContenuPanier()[i]);
+			os << '\t' << *prodEncheresAAfficher << endl;
+		}
+		else {
+			os << '\t' << "Produit invalide" << endl;
+		}
+	}
+	return os;
 }

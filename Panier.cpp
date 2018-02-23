@@ -72,7 +72,7 @@ void Panier::modifierIdClient(int idClient) {
 
 void Panier::appliquerTaxe(Produit * prod)
 {
-	prod->modifierPrix(prod->obtenirPrix*(1 + TAUX_TAXE)); // Ajout des taxes
+	prod->modifierPrix(prod->obtenirPrix()*(1 + TAUX_TAXE)); // Ajout des taxes
 }
 
 void Panier::ajouter(Produit * prod)

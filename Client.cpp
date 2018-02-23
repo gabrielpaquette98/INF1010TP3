@@ -65,7 +65,7 @@ void Client::acheter(ProduitOrdinaire * prod)
 		monPanier_ = new Panier(this->obtenirIdentifiant());
 	monPanier_->ajouter(prod);
 	// obtenir une note aléatoire
-	int noteRnd = rand() % NIVEAUX_SATISFACTION+1;
+	int noteRnd = rand() % NIVEAUX_SATISFACTION;
 	// faire la mise à jour de la satisfaction au fournisseur
 	
 	//cette ligne fait un reset des valeurs de satisfaction. 
@@ -78,7 +78,7 @@ void Client::acheter(ProduitOrdinaire * prod)
 	*/
 	Fournisseur& fournisseur = prod->obtenirFournisseur();
 
-	fournisseur.noter(noteRnd - 1);
+	fournisseur.noter(noteRnd);
 }
 
 void Client::livrerPanier()
